@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Profissional
+
+
+@admin.register(Profissional)
+class ProfissionalAdmin(admin.ModelAdmin):
+	list_display = ("nome", "especialidade", "telefone", "ativo")
+	search_fields = ("nome", "especialidade", "telefone")
