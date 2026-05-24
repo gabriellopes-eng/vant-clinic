@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block titulo %}Formulario de Pagamento{% endblock %}
+
+{% block conteudo %}
+<h2>Formulario de Pagamento</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>
+<p><a href="{% url 'pagamentos:pagamento_list' %}">Voltar</a></p>
+{% endblock %}

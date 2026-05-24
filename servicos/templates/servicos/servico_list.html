@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titulo %}Servicos{% endblock %}
+
+{% block conteudo %}
+<h2>Servicos</h2>
+<p><a href="{% url 'servicos:servico_create' %}">Novo servico</a></p>
+<ul>
+    {% for servico in servicos %}
+        <li>
+            {{ servico.nome }} - R$ {{ servico.preco }}
+            <a href="{% url 'servicos:servico_update' servico.pk %}">Editar</a>
+            <a href="{% url 'servicos:servico_delete' servico.pk %}">Excluir</a>
+        </li>
+    {% empty %}
+        <li>Nenhum servico cadastrado.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

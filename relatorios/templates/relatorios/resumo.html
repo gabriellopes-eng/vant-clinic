@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}Relatorio Resumo{% endblock %}
+
+{% block conteudo %}
+<h2>Relatorio Resumo</h2>
+<ul>
+    <li>Total de agendamentos: {{ total_agendamentos }}</li>
+    <li>Total de cancelamentos: {{ total_cancelamentos }}</li>
+    <li>Total de servicos: {{ total_servicos }}</li>
+    <li>Total de pagamentos: {{ total_pagamentos }}</li>
+    <li>Valor total pago: R$ {{ valor_total_pago }}</li>
+</ul>
+{% endblock %}

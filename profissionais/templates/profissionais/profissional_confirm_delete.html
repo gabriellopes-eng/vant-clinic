@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block titulo %}Excluir Profissional{% endblock %}
+
+{% block conteudo %}
+<h2>Excluir Profissional</h2>
+<p>Confirma excluir {{ object.nome }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar exclusao</button>
+</form>
+<p><a href="{% url 'profissionais:profissional_list' %}">Cancelar</a></p>
+{% endblock %}
