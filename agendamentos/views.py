@@ -1,3 +1,35 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse_lazy
+from django.views import View
+from django.views.generic import CreateView, ListView, UpdateView
 
-# Create your views here.
+from .forms import AgendamentoForm
+from .models import Agendamento
+
+
+class AgendamentoListView(ListView):
+	model = Agendamento
+	template_name = "agendamentos/agendamento_list.html"
+	context_object_name = "agendamentos"
+
+
+class AgendamentoCreateView(CreateView):
+	model = Agendamento
+	form_class = AgendamentoForm
+	template_name = "agendamentos/agendamento_form.html"
+	success_url = reverse_lazy("agendamentos:agendamento_list")
+
+
+class AgendamentoUpdateView(UpdateView):
+	model = Agendamento
+	form_class = AgendamentoForm
+	template_name = "agendamentos/agendamento_form.html"
+	success_url = reverse_lazy("agendamentos:agendamento_list")
+
+
+class AgendamentoCancelarView(View):
+	def post(self, request, pk):
+		agendamento = get_object_or_404(Agendamento, pk=pk)
+		agendamento.status = Agendamento.StatusAgendamento.CANCELADO
+		agendamento.save(update_fields=["status"])
+		return redirect("agendamentos:agendamento_list")
