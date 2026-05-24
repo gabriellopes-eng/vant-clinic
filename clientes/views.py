@@ -1,3 +1,31 @@
-from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-# Create your views here.
+from .forms import ClienteForm
+from .models import Cliente
+
+
+class ClienteListView(ListView):
+	model = Cliente
+	template_name = "clientes/cliente_list.html"
+	context_object_name = "clientes"
+
+
+class ClienteCreateView(CreateView):
+	model = Cliente
+	form_class = ClienteForm
+	template_name = "clientes/cliente_form.html"
+	success_url = reverse_lazy("clientes:cliente_list")
+
+
+class ClienteUpdateView(UpdateView):
+	model = Cliente
+	form_class = ClienteForm
+	template_name = "clientes/cliente_form.html"
+	success_url = reverse_lazy("clientes:cliente_list")
+
+
+class ClienteDeleteView(DeleteView):
+	model = Cliente
+	template_name = "clientes/cliente_confirm_delete.html"
+	success_url = reverse_lazy("clientes:cliente_list")
