@@ -1,6 +1,5 @@
 # Relatorio de Validacao Manual - Backend VANT
 
-Data: 24/05/2026
 Objetivo: validar manualmente se o backend Django do VANT esta funcionando de ponta a ponta.
 
 ## 1. Preparacao do ambiente
