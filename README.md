@@ -7,6 +7,7 @@
 </p>
 
 Plataforma web para operacao de clinicas de estetica, com foco em agenda, atendimento, pagamentos e visao de indicadores.
+<img width="1365" height="621" alt="image" src="https://github.com/user-attachments/assets/5401d7df-b7bb-4d47-abbc-dbabcaf58bb0" />
 
 ## Visao geral
 
