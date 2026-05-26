@@ -3,84 +3,84 @@
 <p align="left">
 	<img src="https://img.shields.io/badge/Django-6.0.5-6F42C1?style=for-the-badge&labelColor=2B0E52" alt="Django 6.0.5">
 	<img src="https://img.shields.io/badge/Python-3.13-8F63D6?style=for-the-badge&labelColor=2B0E52" alt="Python 3.13">
-	<img src="https://img.shields.io/badge/Status-Ativo-7A3FF2?style=for-the-badge&labelColor=2B0E52" alt="Status Ativo">
+	<img src="https://img.shields.io/badge/Status-Active-7A3FF2?style=for-the-badge&labelColor=2B0E52" alt="Status Active">
 </p>
 
-Plataforma web para operacao de clinicas de estetica, com foco em agenda, atendimento, pagamentos e visao de indicadores.
+Web platform for aesthetic clinic operations, focused on scheduling, service delivery, payments, and performance visibility.
 
-## Visao geral
+## Overview
 
-O projeto foi construido em Django com arquitetura modular por app:
+The project was built with Django using a modular app-based architecture:
 
-- `clientes`: cadastro e manutencao de clientes.
-- `profissionais`: equipe, especialidades e status.
-- `servicos`: catalogo de procedimentos, duracao e preco.
-- `agendamentos`: agenda com regra de conflito por profissional e horario.
-- `pagamentos`: controle financeiro por agendamento.
-- `relatorios`: resumo operacional e financeiro.
+- `clientes`: client registration and maintenance.
+- `profissionais`: team members, specialties, and status.
+- `servicos`: procedure catalog, duration, and pricing.
+- `agendamentos`: scheduling with conflict validation per professional and time slot.
+- `pagamentos`: payment control per appointment.
+- `relatorios`: operational and financial summary.
 
-## Destaques funcionais
+## Functional highlights
 
-- Frontend responsivo com identidade visual roxa e layout SaaS.
-- Autenticacao de usuario comum (`login`, `logout`, `cadastro`).
-- Rotas de negocio protegidas por login.
-- Regra critica de agenda: impede dois agendamentos ativos no mesmo horario para o mesmo profissional.
-- Relatorio consolidado com totais de operacao e valor pago.
+- Responsive frontend with a purple visual identity and SaaS-style layout.
+- Regular user authentication (`login`, `logout`, `register`).
+- Business routes protected by authentication.
+- Critical scheduling rule: blocks two active appointments at the same time for the same professional.
+- Consolidated report with operational totals and total paid amount.
 
 ## Stack
 
 - Python + Django
-- SQLite (desenvolvimento)
-- Templates Django + CSS/JS proprio
+- SQLite (development)
+- Django templates + custom CSS/JS
 
 ## Quick start
 
-Execute os comandos abaixo na raiz do projeto.
+Run the commands below from the project root.
 
-### 1. Ativar ambiente virtual (PowerShell)
+### 1. Activate virtual environment (PowerShell)
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 2. Instalar dependencias
+### 2. Install dependencies
 
 ```powershell
 python -m pip install -r requirements.txt
 ```
 
-### 3. Aplicar migrations
+### 3. Apply migrations
 
 ```powershell
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 4. Criar usuario administrador (opcional, recomendado)
+### 4. Create admin user (optional, recommended)
 
 ```powershell
 python manage.py createsuperuser
 ```
 
-### 5. Subir aplicacao
+### 5. Run the application
 
 ```powershell
 python manage.py runserver
 ```
 
-Aplicacao: `http://127.0.0.1:8000/`
+Application: `http://127.0.0.1:8000/`
 
-## Autenticacao
+## Authentication
 
-Fluxo para usuario comum:
+Regular user flow:
 
-- Cadastro: `/auth/register/`
+- Register: `/auth/register/`
 - Login: `/auth/login/`
 - Logout: `/auth/logout/`
 
-Rotas de modulo exigem autenticacao. Sem login, o usuario e redirecionado automaticamente para a tela de login.
+Module routes require authentication. Without login, users are automatically redirected to the login page.
 
-## Rotas principais
+## Main routes
 
 - `/`
 - `/admin/`
@@ -91,45 +91,45 @@ Rotas de modulo exigem autenticacao. Sem login, o usuario e redirecionado automa
 - `/pagamentos/`
 - `/relatorios/resumo/`
 
-## Regra de negocio importante
+## Important business rule
 
-No modulo de agendamentos, o sistema valida conflito de horario ativo por profissional. Em outras palavras:
+In the scheduling module, the system validates active time conflicts per professional. In other words:
 
-- se ja existe um agendamento ativo para o profissional no horario X, outro nao pode ser criado no mesmo slot;
-- se o agendamento anterior for cancelado, o slot volta a ficar disponivel.
+- if there is already an active appointment for a professional at time X, another appointment cannot be created in the same slot;
+- if the previous appointment is cancelled, the slot becomes available again.
 
-## Qualidade e verificacao
+## Quality and verification
 
-Rodar validacao geral:
+Run general validation:
 
 ```powershell
 python manage.py check
 ```
 
-Validacao rapida de rotas (opcional):
+Quick route validation (optional):
 
 ```powershell
 python manage.py shell -c "from django.test import Client; c=Client(); urls=['/','/clientes/','/profissionais/','/servicos/','/agendamentos/','/pagamentos/','/relatorios/resumo/']; print({u:c.get(u, HTTP_HOST='localhost').status_code for u in urls})"
 ```
 
-## Estrutura resumida
+## Project structure (summary)
 
 ```text
-config/           # settings e urls globais
-core/             # home, autenticacao e base layout
-clientes/         # CRUD de clientes
-profissionais/    # CRUD de profissionais
-servicos/         # CRUD de servicos
-agendamentos/     # agenda e cancelamento
-pagamentos/       # CRUD de pagamentos
-relatorios/       # dashboards e resumo
+config/           # global settings and urls
+core/             # home, authentication, and base layout
+clientes/         # client CRUD
+profissionais/    # professional CRUD
+servicos/         # service CRUD
+agendamentos/     # scheduling and cancellation
+pagamentos/       # payment CRUD
+relatorios/       # dashboards and summary
 ```
 
-## Observacao de ambiente
+## Environment note
 
-Este projeto esta pronto para desenvolvimento local. Para producao, recomenda-se:
+This project is ready for local development. For production, it is recommended to use:
 
-- banco gerenciado (PostgreSQL),
-- configuracao de `ALLOWED_HOSTS`,
-- secret key por variavel de ambiente,
-- servidor WSGI/ASGI dedicado.
+- managed database (PostgreSQL),
+- proper `ALLOWED_HOSTS` configuration,
+- secret key via environment variable,
+- dedicated WSGI/ASGI server.
