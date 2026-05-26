@@ -3,11 +3,17 @@
 {% block titulo %}Excluir Profissional{% endblock %}
 
 {% block conteudo %}
-<h2>Excluir Profissional</h2>
-<p>Confirma excluir {{ object.nome }}?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Confirmar exclusao</button>
-</form>
-<p><a href="{% url 'profissionais:profissional_list' %}">Cancelar</a></p>
+<section class="panel">
+    <div class="title-group">
+        <h2>Excluir profissional</h2>
+        <p>Esta acao remove o cadastro de <strong>{{ object.nome }}</strong>.</p>
+    </div>
+    <form method="post" class="form-layout" data-confirm="Tem certeza que deseja excluir este profissional?">
+        {% csrf_token %}
+        <div class="button-row">
+            <button class="btn btn-danger" type="submit">Confirmar exclusao</button>
+            <a class="btn btn-secondary" href="{% url 'profissionais:profissional_list' %}">Cancelar</a>
+        </div>
+    </form>
+</section>
 {% endblock %}

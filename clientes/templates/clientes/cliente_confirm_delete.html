@@ -3,11 +3,17 @@
 {% block titulo %}Excluir Cliente{% endblock %}
 
 {% block conteudo %}
-<h2>Excluir Cliente</h2>
-<p>Confirma excluir {{ object.nome }}?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Confirmar exclusao</button>
-</form>
-<p><a href="{% url 'clientes:cliente_list' %}">Cancelar</a></p>
+<section class="panel">
+    <div class="title-group">
+        <h2>Excluir cliente</h2>
+        <p>Esta acao remove o cadastro de <strong>{{ object.nome }}</strong>.</p>
+    </div>
+    <form method="post" class="form-layout" data-confirm="Tem certeza que deseja excluir este cliente?">
+        {% csrf_token %}
+        <div class="button-row">
+            <button class="btn btn-danger" type="submit">Confirmar exclusao</button>
+            <a class="btn btn-secondary" href="{% url 'clientes:cliente_list' %}">Cancelar</a>
+        </div>
+    </form>
+</section>
 {% endblock %}

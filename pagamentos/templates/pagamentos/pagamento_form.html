@@ -3,11 +3,50 @@
 {% block titulo %}Formulario de Pagamento{% endblock %}
 
 {% block conteudo %}
-<h2>Formulario de Pagamento</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Salvar</button>
-</form>
-<p><a href="{% url 'pagamentos:pagamento_list' %}">Voltar</a></p>
+<section class="panel">
+    <div class="page-header">
+        <div class="title-group">
+            <h2>{% if form.instance.pk %}Editar pagamento{% else %}Novo pagamento{% endif %}</h2>
+            <p>Registre recebimentos e acompanhe o status financeiro dos agendamentos.</p>
+        </div>
+    </div>
+
+    <form method="post" class="form-layout">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <ul class="non-field-errors">
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="form-grid">
+            {% for field in form %}
+                <div class="field {% if field.errors %}has-error{% endif %}">
+                    {{ field.label_tag }}
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <small class="help-text">{{ field.help_text }}</small>
+                    {% endif %}
+
+                    {% if field.errors %}
+                        <ul class="field-errors">
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="button-row">
+            <button type="submit">Salvar pagamento</button>
+            <a class="btn btn-secondary" href="{% url 'pagamentos:pagamento_list' %}">Voltar</a>
+        </div>
+    </form>
+</section>
 {% endblock %}

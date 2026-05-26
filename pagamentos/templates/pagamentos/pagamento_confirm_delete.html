@@ -3,11 +3,17 @@
 {% block titulo %}Excluir Pagamento{% endblock %}
 
 {% block conteudo %}
-<h2>Excluir Pagamento</h2>
-<p>Confirma excluir o pagamento {{ object.pk }}?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Confirmar exclusao</button>
-</form>
-<p><a href="{% url 'pagamentos:pagamento_list' %}">Cancelar</a></p>
+<section class="panel">
+    <div class="title-group">
+        <h2>Excluir pagamento</h2>
+        <p>Esta acao remove o registro de pagamento <strong>#{{ object.pk }}</strong>.</p>
+    </div>
+    <form method="post" class="form-layout" data-confirm="Tem certeza que deseja excluir este pagamento?">
+        {% csrf_token %}
+        <div class="button-row">
+            <button class="btn btn-danger" type="submit">Confirmar exclusao</button>
+            <a class="btn btn-secondary" href="{% url 'pagamentos:pagamento_list' %}">Cancelar</a>
+        </div>
+    </form>
+</section>
 {% endblock %}

@@ -3,17 +3,53 @@
 {% block titulo %}Profissionais{% endblock %}
 
 {% block conteudo %}
-<h2>Profissionais</h2>
-<p><a href="{% url 'profissionais:profissional_create' %}">Novo profissional</a></p>
-<ul>
-    {% for profissional in profissionais %}
-        <li>
-            {{ profissional.nome }} - {{ profissional.especialidade }}
-            <a href="{% url 'profissionais:profissional_update' profissional.pk %}">Editar</a>
-            <a href="{% url 'profissionais:profissional_delete' profissional.pk %}">Excluir</a>
-        </li>
-    {% empty %}
-        <li>Nenhum profissional cadastrado.</li>
-    {% endfor %}
-</ul>
+<section class="panel">
+    <div class="page-header">
+        <div class="title-group">
+            <h2>Profissionais</h2>
+            <p>Gestao da equipe com especialidades e canais de contato.</p>
+        </div>
+        <a class="btn btn-primary" href="{% url 'profissionais:profissional_create' %}">Novo profissional</a>
+    </div>
+
+    {% if profissionais %}
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Especialidade</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Acoes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for profissional in profissionais %}
+                        <tr>
+                            <td>{{ profissional.nome }}</td>
+                            <td>{{ profissional.especialidade|default:'-' }}</td>
+                            <td>{{ profissional.telefone|default:'-' }}</td>
+                            <td>{{ profissional.email|default:'-' }}</td>
+                            <td>
+                                <span class="status-badge {% if profissional.ativo %}ativo{% else %}inativo{% endif %}">
+                                    {% if profissional.ativo %}Ativo{% else %}Inativo{% endif %}
+                                </span>
+                            </td>
+                            <td>
+                                <div class="button-row">
+                                    <a class="btn btn-secondary btn-sm" href="{% url 'profissionais:profissional_update' profissional.pk %}">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'profissionais:profissional_delete' profissional.pk %}">Excluir</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="empty-state">Nenhum profissional cadastrado ainda.</div>
+    {% endif %}
+</section>
 {% endblock %}

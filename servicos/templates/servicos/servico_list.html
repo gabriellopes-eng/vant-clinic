@@ -3,17 +3,56 @@
 {% block titulo %}Servicos{% endblock %}
 
 {% block conteudo %}
-<h2>Servicos</h2>
-<p><a href="{% url 'servicos:servico_create' %}">Novo servico</a></p>
-<ul>
-    {% for servico in servicos %}
-        <li>
-            {{ servico.nome }} - R$ {{ servico.preco }}
-            <a href="{% url 'servicos:servico_update' servico.pk %}">Editar</a>
-            <a href="{% url 'servicos:servico_delete' servico.pk %}">Excluir</a>
-        </li>
-    {% empty %}
-        <li>Nenhum servico cadastrado.</li>
-    {% endfor %}
-</ul>
+<section class="panel">
+    <div class="page-header">
+        <div class="title-group">
+            <h2>Servicos</h2>
+            <p>Catalogo de procedimentos com duracao estimada e valores.</p>
+        </div>
+        <a class="btn btn-primary" href="{% url 'servicos:servico_create' %}">Novo servico</a>
+    </div>
+
+    {% if servicos %}
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Servico</th>
+                        <th>Duracao</th>
+                        <th>Preco</th>
+                        <th>Status</th>
+                        <th>Acoes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for servico in servicos %}
+                        <tr>
+                            <td>
+                                <strong>{{ servico.nome }}</strong>
+                                {% if servico.descricao %}
+                                    <div class="muted">{{ servico.descricao }}</div>
+                                {% endif %}
+                            </td>
+                            <td>{{ servico.duracao_minutos }} min</td>
+                            <td>R$ {{ servico.preco }}</td>
+                            <td>
+                                <span class="status-badge {% if servico.ativo %}ativo{% else %}inativo{% endif %}">
+                                    {% if servico.ativo %}Ativo{% else %}Inativo{% endif %}
+                                </span>
+                            </td>
+                            <td>
+                                <div class="button-row">
+                                    <a class="btn btn-secondary btn-sm" href="{% url 'servicos:servico_update' servico.pk %}">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'servicos:servico_delete' servico.pk %}">Excluir</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="empty-state">Nenhum servico cadastrado ainda.</div>
+    {% endif %}
+</section>
 {% endblock %}

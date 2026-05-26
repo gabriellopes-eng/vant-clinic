@@ -3,12 +3,35 @@
 {% block titulo %}Relatorio Resumo{% endblock %}
 
 {% block conteudo %}
-<h2>Relatorio Resumo</h2>
-<ul>
-    <li>Total de agendamentos: {{ total_agendamentos }}</li>
-    <li>Total de cancelamentos: {{ total_cancelamentos }}</li>
-    <li>Total de servicos: {{ total_servicos }}</li>
-    <li>Total de pagamentos: {{ total_pagamentos }}</li>
-    <li>Valor total pago: R$ {{ valor_total_pago }}</li>
-</ul>
+<section class="panel">
+    <div class="page-header">
+        <div class="title-group">
+            <h2>Relatorio resumo</h2>
+            <p>Indicadores operacionais e financeiros da clinica em tempo real.</p>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <article class="stat-card">
+            <span>Agendamentos</span>
+            <strong>{{ total_agendamentos }}</strong>
+        </article>
+        <article class="stat-card">
+            <span>Cancelamentos</span>
+            <strong>{{ total_cancelamentos }}</strong>
+        </article>
+        <article class="stat-card">
+            <span>Servicos</span>
+            <strong>{{ total_servicos }}</strong>
+        </article>
+        <article class="stat-card">
+            <span>Pagamentos</span>
+            <strong>{{ total_pagamentos }}</strong>
+        </article>
+        <article class="stat-card">
+            <span>Total pago</span>
+            <strong>R$ {{ valor_total_pago }}</strong>
+        </article>
+    </div>
+</section>
 {% endblock %}

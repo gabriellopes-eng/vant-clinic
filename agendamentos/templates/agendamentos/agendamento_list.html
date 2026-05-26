@@ -3,22 +3,56 @@
 {% block titulo %}Agendamentos{% endblock %}
 
 {% block conteudo %}
-<h2>Agendamentos</h2>
-<p><a href="{% url 'agendamentos:agendamento_create' %}">Novo agendamento</a></p>
-<ul>
-    {% for agendamento in agendamentos %}
-        <li>
-            {{ agendamento.data_hora }} - {{ agendamento.cliente }} - {{ agendamento.profissional }} - {{ agendamento.status }}
-            <a href="{% url 'agendamentos:agendamento_update' agendamento.pk %}">Reagendar</a>
-            {% if agendamento.status != 'CANCELADO' %}
-                <form method="post" action="{% url 'agendamentos:agendamento_cancelar' agendamento.pk %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit">Cancelar</button>
-                </form>
-            {% endif %}
-        </li>
-    {% empty %}
-        <li>Nenhum agendamento cadastrado.</li>
-    {% endfor %}
-</ul>
+<section class="panel">
+    <div class="page-header">
+        <div class="title-group">
+            <h2>Agendamentos</h2>
+            <p>Controle da agenda com validacao de conflito por profissional e horario.</p>
+        </div>
+        <a class="btn btn-primary" href="{% url 'agendamentos:agendamento_create' %}">Novo agendamento</a>
+    </div>
+
+    {% if agendamentos %}
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data e horario</th>
+                        <th>Cliente</th>
+                        <th>Profissional</th>
+                        <th>Servico</th>
+                        <th>Status</th>
+                        <th>Acoes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for agendamento in agendamentos %}
+                        <tr>
+                            <td>{{ agendamento.data_hora|date:"d/m/Y H:i" }}</td>
+                            <td>{{ agendamento.cliente }}</td>
+                            <td>{{ agendamento.profissional }}</td>
+                            <td>{{ agendamento.servico }}</td>
+                            <td>
+                                <span class="status-badge {{ agendamento.status|lower }}">{{ agendamento.get_status_display }}</span>
+                            </td>
+                            <td>
+                                <div class="button-row">
+                                    <a class="btn btn-secondary btn-sm" href="{% url 'agendamentos:agendamento_update' agendamento.pk %}">Reagendar</a>
+                                    {% if agendamento.status != 'CANCELADO' %}
+                                        <form class="inline-form" method="post" action="{% url 'agendamentos:agendamento_cancelar' agendamento.pk %}" data-confirm="Confirmar cancelamento deste agendamento?">
+                                            {% csrf_token %}
+                                            <button class="btn btn-danger btn-sm" type="submit">Cancelar</button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="empty-state">Nenhum agendamento cadastrado ainda.</div>
+    {% endif %}
+</section>
 {% endblock %}

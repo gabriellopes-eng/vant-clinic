@@ -3,17 +3,51 @@
 {% block titulo %}Clientes{% endblock %}
 
 {% block conteudo %}
-<h2>Clientes</h2>
-<p><a href="{% url 'clientes:cliente_create' %}">Novo cliente</a></p>
-<ul>
-    {% for cliente in clientes %}
-        <li>
-            {{ cliente.nome }} - {{ cliente.telefone }}
-            <a href="{% url 'clientes:cliente_update' cliente.pk %}">Editar</a>
-            <a href="{% url 'clientes:cliente_delete' cliente.pk %}">Excluir</a>
-        </li>
-    {% empty %}
-        <li>Nenhum cliente cadastrado.</li>
-    {% endfor %}
-</ul>
+<section class="panel">
+    <div class="page-header">
+        <div class="title-group">
+            <h2>Clientes</h2>
+            <p>Base de relacionamento da clinica com dados de contato e status de atividade.</p>
+        </div>
+        <a class="btn btn-primary" href="{% url 'clientes:cliente_create' %}">Novo cliente</a>
+    </div>
+
+    {% if clientes %}
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Acoes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente.nome }}</td>
+                            <td>{{ cliente.telefone|default:'-' }}</td>
+                            <td>{{ cliente.email|default:'-' }}</td>
+                            <td>
+                                <span class="status-badge {% if cliente.ativo %}ativo{% else %}inativo{% endif %}">
+                                    {% if cliente.ativo %}Ativo{% else %}Inativo{% endif %}
+                                </span>
+                            </td>
+                            <td>
+                                <div class="button-row">
+                                    <a class="btn btn-secondary btn-sm" href="{% url 'clientes:cliente_update' cliente.pk %}">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'clientes:cliente_delete' cliente.pk %}">Excluir</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="empty-state">Nenhum cliente cadastrado ainda.</div>
+    {% endif %}
+</section>
 {% endblock %}
