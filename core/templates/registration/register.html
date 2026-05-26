@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block titulo %}Register - VANT Clinic{% endblock %}
+
+{% block conteudo %}
+<section class="panel auth-panel">
+    <div class="page-header">
+        <div class="title-group">
+            <h2>Create account</h2>
+            <p>Register a regular user to access the platform as a non-admin account.</p>
+        </div>
+    </div>
+
+    <form method="post" class="form-layout">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <ul class="non-field-errors">
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="form-grid">
+            {% for field in form %}
+                <div class="field full {% if field.errors %}has-error{% endif %}">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small class="help-text">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% if field.errors %}
+                        <ul class="field-errors">
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="button-row">
+            <button type="submit">Register</button>
+            <a class="btn btn-secondary" href="{% url 'core:login' %}">I already have an account</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

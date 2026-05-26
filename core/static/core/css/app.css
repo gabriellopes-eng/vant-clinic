@@ -119,6 +119,20 @@ body {
     gap: 0.35rem;
 }
 
+.nav-user {
+    margin-left: 0.25rem;
+    padding: 0.35rem 0.55rem;
+    border-radius: 999px;
+    background: #efe3ff;
+    color: var(--brand-strong);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.nav-inline-form {
+    margin: 0;
+}
+
 .main-nav a {
     color: var(--ink-soft);
     text-decoration: none;
@@ -547,6 +561,11 @@ input[type="submit"]:hover {
     color: var(--ink-soft);
     font-size: 0.82rem;
     padding: 0.2rem;
+}
+
+.auth-panel {
+    width: min(520px, 100%);
+    margin: 0 auto;
 }
 
 .inline-form {

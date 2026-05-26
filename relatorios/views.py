@@ -1,4 +1,5 @@
 from django.db.models import Sum
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 
 from agendamentos.models import Agendamento
@@ -6,7 +7,7 @@ from pagamentos.models import Pagamento
 from servicos.models import ServicoEstetico
 
 
-class RelatorioResumoView(TemplateView):
+class RelatorioResumoView(LoginRequiredMixin, TemplateView):
 	template_name = "relatorios/resumo.html"
 
 	def get_context_data(self, **kwargs):

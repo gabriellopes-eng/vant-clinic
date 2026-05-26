@@ -1,31 +1,32 @@
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from .forms import ProfissionalForm
 from .models import Profissional
 
 
-class ProfissionalListView(ListView):
+class ProfissionalListView(LoginRequiredMixin, ListView):
 	model = Profissional
 	template_name = "profissionais/profissional_list.html"
 	context_object_name = "profissionais"
 
 
-class ProfissionalCreateView(CreateView):
+class ProfissionalCreateView(LoginRequiredMixin, CreateView):
 	model = Profissional
 	form_class = ProfissionalForm
 	template_name = "profissionais/profissional_form.html"
 	success_url = reverse_lazy("profissionais:profissional_list")
 
 
-class ProfissionalUpdateView(UpdateView):
+class ProfissionalUpdateView(LoginRequiredMixin, UpdateView):
 	model = Profissional
 	form_class = ProfissionalForm
 	template_name = "profissionais/profissional_form.html"
 	success_url = reverse_lazy("profissionais:profissional_list")
 
 
-class ProfissionalDeleteView(DeleteView):
+class ProfissionalDeleteView(LoginRequiredMixin, DeleteView):
 	model = Profissional
 	template_name = "profissionais/profissional_confirm_delete.html"
 	success_url = reverse_lazy("profissionais:profissional_list")
