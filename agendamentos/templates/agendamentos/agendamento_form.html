@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block titulo %}Formulario de Agendamento{% endblock %}
+{% block titulo %}Appointment Form{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>{% if form.instance.pk %}Reagendar atendimento{% else %}Novo agendamento{% endif %}</h2>
-            <p>Escolha cliente, profissional, servico e horario. O backend valida conflito automaticamente.</p>
+            <h2>{% if form.instance.pk %}Reschedule appointment{% else %}New appointment{% endif %}</h2>
+            <p>Select client, professional, service, and time. Backend conflict validation is automatic.</p>
         </div>
     </div>
 
@@ -44,8 +44,8 @@
         </div>
 
         <div class="button-row">
-            <button type="submit">Salvar agendamento</button>
-            <a class="btn btn-secondary" href="{% url 'agendamentos:agendamento_list' %}">Voltar</a>
+            <button type="submit">Save appointment</button>
+            <a class="btn btn-secondary" href="{% url 'agendamentos:agendamento_list' %}">Back</a>
         </div>
     </form>
 </section>

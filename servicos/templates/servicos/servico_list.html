@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block titulo %}Servicos{% endblock %}
+{% block titulo %}Services{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>Servicos</h2>
-            <p>Catalogo de procedimentos com duracao estimada e valores.</p>
+            <h2>Services</h2>
+            <p>Procedure catalog with estimated duration and pricing.</p>
         </div>
-        <a class="btn btn-primary" href="{% url 'servicos:servico_create' %}">Novo servico</a>
+        <a class="btn btn-primary" href="{% url 'servicos:servico_create' %}">New service</a>
     </div>
 
     {% if servicos %}
@@ -17,11 +17,11 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>Servico</th>
-                        <th>Duracao</th>
-                        <th>Preco</th>
+                        <th>Service</th>
+                        <th>Duration</th>
+                        <th>Price</th>
                         <th>Status</th>
-                        <th>Acoes</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,13 +37,13 @@
                             <td>R$ {{ servico.preco }}</td>
                             <td>
                                 <span class="status-badge {% if servico.ativo %}ativo{% else %}inativo{% endif %}">
-                                    {% if servico.ativo %}Ativo{% else %}Inativo{% endif %}
+                                    {% if servico.ativo %}Active{% else %}Inactive{% endif %}
                                 </span>
                             </td>
                             <td>
                                 <div class="button-row">
-                                    <a class="btn btn-secondary btn-sm" href="{% url 'servicos:servico_update' servico.pk %}">Editar</a>
-                                    <a class="btn btn-danger btn-sm" href="{% url 'servicos:servico_delete' servico.pk %}">Excluir</a>
+                                    <a class="btn btn-secondary btn-sm" href="{% url 'servicos:servico_update' servico.pk %}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'servicos:servico_delete' servico.pk %}">Delete</a>
                                 </div>
                             </td>
                         </tr>
@@ -52,7 +52,7 @@
             </table>
         </div>
     {% else %}
-        <div class="empty-state">Nenhum servico cadastrado ainda.</div>
+        <div class="empty-state">No services registered yet.</div>
     {% endif %}
 </section>
 {% endblock %}

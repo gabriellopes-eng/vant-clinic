@@ -5,8 +5,8 @@ from agendamentos.models import Agendamento
 
 class Pagamento(models.Model):
 	class StatusPagamento(models.TextChoices):
-		PENDENTE = "PENDENTE", "Pendente"
-		PAGO = "PAGO", "Pago"
+		PENDENTE = "PENDENTE", "Pending"
+		PAGO = "PAGO", "Paid"
 
 	agendamento = models.OneToOneField(Agendamento, on_delete=models.CASCADE, related_name="pagamento")
 	valor = models.DecimalField(max_digits=10, decimal_places=2)

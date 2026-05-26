@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block titulo %}Profissionais{% endblock %}
+{% block titulo %}Professionals{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>Profissionais</h2>
-            <p>Gestao da equipe com especialidades e canais de contato.</p>
+            <h2>Professionals</h2>
+            <p>Team management with specialties and contact channels.</p>
         </div>
-        <a class="btn btn-primary" href="{% url 'profissionais:profissional_create' %}">Novo profissional</a>
+        <a class="btn btn-primary" href="{% url 'profissionais:profissional_create' %}">New professional</a>
     </div>
 
     {% if profissionais %}
@@ -17,12 +17,12 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Especialidade</th>
-                        <th>Telefone</th>
+                        <th>Name</th>
+                        <th>Specialty</th>
+                        <th>Phone</th>
                         <th>Email</th>
                         <th>Status</th>
-                        <th>Acoes</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,13 +34,13 @@
                             <td>{{ profissional.email|default:'-' }}</td>
                             <td>
                                 <span class="status-badge {% if profissional.ativo %}ativo{% else %}inativo{% endif %}">
-                                    {% if profissional.ativo %}Ativo{% else %}Inativo{% endif %}
+                                    {% if profissional.ativo %}Active{% else %}Inactive{% endif %}
                                 </span>
                             </td>
                             <td>
                                 <div class="button-row">
-                                    <a class="btn btn-secondary btn-sm" href="{% url 'profissionais:profissional_update' profissional.pk %}">Editar</a>
-                                    <a class="btn btn-danger btn-sm" href="{% url 'profissionais:profissional_delete' profissional.pk %}">Excluir</a>
+                                    <a class="btn btn-secondary btn-sm" href="{% url 'profissionais:profissional_update' profissional.pk %}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'profissionais:profissional_delete' profissional.pk %}">Delete</a>
                                 </div>
                             </td>
                         </tr>
@@ -49,7 +49,7 @@
             </table>
         </div>
     {% else %}
-        <div class="empty-state">Nenhum profissional cadastrado ainda.</div>
+        <div class="empty-state">No professionals registered yet.</div>
     {% endif %}
 </section>
 {% endblock %}

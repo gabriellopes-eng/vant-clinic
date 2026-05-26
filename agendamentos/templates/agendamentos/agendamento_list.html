@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block titulo %}Agendamentos{% endblock %}
+{% block titulo %}Appointments{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>Agendamentos</h2>
-            <p>Controle da agenda com validacao de conflito por profissional e horario.</p>
+            <h2>Appointments</h2>
+            <p>Schedule control with conflict validation by professional and time slot.</p>
         </div>
-        <a class="btn btn-primary" href="{% url 'agendamentos:agendamento_create' %}">Novo agendamento</a>
+        <a class="btn btn-primary" href="{% url 'agendamentos:agendamento_create' %}">New appointment</a>
     </div>
 
     {% if agendamentos %}
@@ -17,12 +17,12 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>Data e horario</th>
-                        <th>Cliente</th>
-                        <th>Profissional</th>
-                        <th>Servico</th>
+                        <th>Date and time</th>
+                        <th>Client</th>
+                        <th>Professional</th>
+                        <th>Service</th>
                         <th>Status</th>
-                        <th>Acoes</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,15 +33,23 @@
                             <td>{{ agendamento.profissional }}</td>
                             <td>{{ agendamento.servico }}</td>
                             <td>
-                                <span class="status-badge {{ agendamento.status|lower }}">{{ agendamento.get_status_display }}</span>
+                                <span class="status-badge {{ agendamento.status|lower }}">
+                                    {% if agendamento.status == 'AGENDADO' %}
+                                        Scheduled
+                                    {% elif agendamento.status == 'CANCELADO' %}
+                                        Cancelled
+                                    {% else %}
+                                        Completed
+                                    {% endif %}
+                                </span>
                             </td>
                             <td>
                                 <div class="button-row">
-                                    <a class="btn btn-secondary btn-sm" href="{% url 'agendamentos:agendamento_update' agendamento.pk %}">Reagendar</a>
+                                    <a class="btn btn-secondary btn-sm" href="{% url 'agendamentos:agendamento_update' agendamento.pk %}">Reschedule</a>
                                     {% if agendamento.status != 'CANCELADO' %}
-                                        <form class="inline-form" method="post" action="{% url 'agendamentos:agendamento_cancelar' agendamento.pk %}" data-confirm="Confirmar cancelamento deste agendamento?">
+                                        <form class="inline-form" method="post" action="{% url 'agendamentos:agendamento_cancelar' agendamento.pk %}" data-confirm="Confirm cancellation of this appointment?">
                                             {% csrf_token %}
-                                            <button class="btn btn-danger btn-sm" type="submit">Cancelar</button>
+                                            <button class="btn btn-danger btn-sm" type="submit">Cancel</button>
                                         </form>
                                     {% endif %}
                                 </div>
@@ -52,7 +60,7 @@
             </table>
         </div>
     {% else %}
-        <div class="empty-state">Nenhum agendamento cadastrado ainda.</div>
+        <div class="empty-state">No appointments registered yet.</div>
     {% endif %}
 </section>
 {% endblock %}

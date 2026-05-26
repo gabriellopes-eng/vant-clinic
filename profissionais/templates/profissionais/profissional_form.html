@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block titulo %}Formulario de Profissional{% endblock %}
+{% block titulo %}Professional Form{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>{% if form.instance.pk %}Editar profissional{% else %}Novo profissional{% endif %}</h2>
-            <p>Cadastro da equipe com especialidade e meios de contato.</p>
+            <h2>{% if form.instance.pk %}Edit professional{% else %}New professional{% endif %}</h2>
+            <p>Register your team with specialty and contact details.</p>
         </div>
     </div>
 
@@ -49,8 +49,8 @@
         </div>
 
         <div class="button-row">
-            <button type="submit">Salvar</button>
-            <a class="btn btn-secondary" href="{% url 'profissionais:profissional_list' %}">Voltar</a>
+            <button type="submit">Save</button>
+            <a class="btn btn-secondary" href="{% url 'profissionais:profissional_list' %}">Back</a>
         </div>
     </form>
 </section>

@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 
-{% block titulo %}Excluir Servico{% endblock %}
+{% block titulo %}Delete Service{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="title-group">
-        <h2>Excluir servico</h2>
-        <p>Esta acao remove o servico <strong>{{ object.nome }}</strong> do catalogo.</p>
+        <h2>Delete service</h2>
+        <p>This action removes <strong>{{ object.nome }}</strong> from your service catalog.</p>
     </div>
-    <form method="post" class="form-layout" data-confirm="Tem certeza que deseja excluir este servico?">
+    <form method="post" class="form-layout" data-confirm="Are you sure you want to delete this service?">
         {% csrf_token %}
         <div class="button-row">
-            <button class="btn btn-danger" type="submit">Confirmar exclusao</button>
-            <a class="btn btn-secondary" href="{% url 'servicos:servico_list' %}">Cancelar</a>
+            <button class="btn btn-danger" type="submit">Confirm deletion</button>
+            <a class="btn btn-secondary" href="{% url 'servicos:servico_list' %}">Cancel</a>
         </div>
     </form>
 </section>

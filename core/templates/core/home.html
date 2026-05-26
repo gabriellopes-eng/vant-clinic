@@ -1,59 +1,59 @@
 {% extends "base.html" %}
 
-{% block titulo %}Inicio - VANT Clinic{% endblock %}
+{% block titulo %}Home - VANT Clinic{% endblock %}
 
 {% block conteudo %}
 <section class="hero">
 	<div class="hero-main">
-		<h1>Operacao completa da sua clinica, em uma unica tela.</h1>
+		<h1>Your clinic operations, fully managed in one place.</h1>
 		<p>
-			Gerencie clientes, profissionais, servicos, agendamentos e pagamentos com um fluxo limpo,
-			rapido e pronto para o dia a dia da clinica.
+			Manage clients, professionals, services, appointments, and payments with a clean,
+			fast workflow ready for daily operations.
 		</p>
 		<div class="button-row" style="margin-top: 1rem;">
-			<a class="btn btn-primary" href="{% url 'agendamentos:agendamento_create' %}">Novo agendamento</a>
-			<a class="btn btn-secondary" href="{% url 'relatorios:resumo' %}">Ver relatorios</a>
+			<a class="btn btn-primary" href="{% url 'agendamentos:agendamento_create' %}">New appointment</a>
+			<a class="btn btn-secondary" href="{% url 'relatorios:resumo' %}">View reports</a>
 		</div>
 	</div>
 
 	<div class="hero-kpis">
 		<article class="kpi-card">
-			<span>Modulo</span>
-			<strong>Agendamentos</strong>
-			<p class="muted">Controle de conflito de horario por profissional.</p>
+			<span>Module</span>
+			<strong>Appointments</strong>
+			<p class="muted">Conflict prevention by professional and time slot.</p>
 		</article>
 		<article class="kpi-card">
-			<span>Modulo</span>
-			<strong>Pagamentos</strong>
-			<p class="muted">Acompanhamento de status pendente e pago.</p>
+			<span>Module</span>
+			<strong>Payments</strong>
+			<p class="muted">Track pending and paid statuses in real time.</p>
 		</article>
 	</div>
 </section>
 
 <section class="cards-grid">
 	<a class="shortcut-card" href="{% url 'clientes:cliente_list' %}">
-		<h3>Clientes</h3>
-		<p>Cadastro e historico dos clientes atendidos pela clinica.</p>
+		<h3>Clients</h3>
+		<p>Client records and relationship history.</p>
 	</a>
 	<a class="shortcut-card" href="{% url 'profissionais:profissional_list' %}">
-		<h3>Profissionais</h3>
-		<p>Equipe, especialidades e status de atividade.</p>
+		<h3>Professionals</h3>
+		<p>Team profiles, specialties, and active status.</p>
 	</a>
 	<a class="shortcut-card" href="{% url 'servicos:servico_list' %}">
-		<h3>Servicos</h3>
-		<p>Catalogo com duracao e valores para cada atendimento.</p>
+		<h3>Services</h3>
+		<p>Service catalog with duration and pricing.</p>
 	</a>
 	<a class="shortcut-card" href="{% url 'agendamentos:agendamento_list' %}">
-		<h3>Agenda</h3>
-		<p>Visualizacao central da rotina de atendimento.</p>
+		<h3>Schedule</h3>
+		<p>Centralized daily appointment view.</p>
 	</a>
 	<a class="shortcut-card" href="{% url 'pagamentos:pagamento_list' %}">
-		<h3>Pagamentos</h3>
-		<p>Confirmacao de recebimentos e acompanhamento financeiro.</p>
+		<h3>Payments</h3>
+		<p>Revenue tracking and payment confirmation.</p>
 	</a>
 	<a class="shortcut-card" href="{% url 'relatorios:resumo' %}">
-		<h3>Relatorios</h3>
-		<p>Resumo rapido dos indicadores operacionais da clinica.</p>
+		<h3>Reports</h3>
+		<p>Quick overview of clinic performance indicators.</p>
 	</a>
 </section>
 {% endblock %}

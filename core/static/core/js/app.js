@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 submitButton.dataset.loadingApplied = "true";
                 submitButton.classList.add("loading");
                 submitButton.disabled = true;
-                submitButton.textContent = "Processando...";
+                submitButton.textContent = "Processing...";
             }
         });
     });

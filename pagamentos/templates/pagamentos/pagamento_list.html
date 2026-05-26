@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block titulo %}Pagamentos{% endblock %}
+{% block titulo %}Payments{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>Pagamentos</h2>
-            <p>Acompanhamento financeiro dos agendamentos e seus status de recebimento.</p>
+            <h2>Payments</h2>
+            <p>Financial tracking of appointments and payment statuses.</p>
         </div>
-        <a class="btn btn-primary" href="{% url 'pagamentos:pagamento_create' %}">Novo pagamento</a>
+        <a class="btn btn-primary" href="{% url 'pagamentos:pagamento_create' %}">New payment</a>
     </div>
 
     {% if pagamentos %}
@@ -17,12 +17,12 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>Agendamento</th>
-                        <th>Valor</th>
+                        <th>Appointment</th>
+                        <th>Amount</th>
                         <th>Status</th>
-                        <th>Data de pagamento</th>
-                        <th>Forma</th>
-                        <th>Acoes</th>
+                        <th>Payment date</th>
+                        <th>Method</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,14 +31,20 @@
                             <td>#{{ pagamento.agendamento_id }}</td>
                             <td>R$ {{ pagamento.valor }}</td>
                             <td>
-                                <span class="status-badge {{ pagamento.status|lower }}">{{ pagamento.get_status_display }}</span>
+                                <span class="status-badge {{ pagamento.status|lower }}">
+                                    {% if pagamento.status == 'PENDENTE' %}
+                                        Pending
+                                    {% else %}
+                                        Paid
+                                    {% endif %}
+                                </span>
                             </td>
                             <td>{{ pagamento.data_pagamento|date:"d/m/Y"|default:'-' }}</td>
                             <td>{{ pagamento.forma_pagamento|default:'-' }}</td>
                             <td>
                                 <div class="button-row">
-                                    <a class="btn btn-secondary btn-sm" href="{% url 'pagamentos:pagamento_update' pagamento.pk %}">Editar</a>
-                                    <a class="btn btn-danger btn-sm" href="{% url 'pagamentos:pagamento_delete' pagamento.pk %}">Excluir</a>
+                                    <a class="btn btn-secondary btn-sm" href="{% url 'pagamentos:pagamento_update' pagamento.pk %}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'pagamentos:pagamento_delete' pagamento.pk %}">Delete</a>
                                 </div>
                             </td>
                         </tr>
@@ -47,7 +53,7 @@
             </table>
         </div>
     {% else %}
-        <div class="empty-state">Nenhum pagamento cadastrado ainda.</div>
+        <div class="empty-state">No payments registered yet.</div>
     {% endif %}
 </section>
 {% endblock %}

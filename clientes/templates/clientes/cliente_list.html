@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block titulo %}Clientes{% endblock %}
+{% block titulo %}Clients{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>Clientes</h2>
-            <p>Base de relacionamento da clinica com dados de contato e status de atividade.</p>
+            <h2>Clients</h2>
+            <p>Relationship base with contact details and activity status.</p>
         </div>
-        <a class="btn btn-primary" href="{% url 'clientes:cliente_create' %}">Novo cliente</a>
+        <a class="btn btn-primary" href="{% url 'clientes:cliente_create' %}">New client</a>
     </div>
 
     {% if clientes %}
@@ -17,11 +17,11 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Telefone</th>
+                        <th>Name</th>
+                        <th>Phone</th>
                         <th>Email</th>
                         <th>Status</th>
-                        <th>Acoes</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,13 +32,13 @@
                             <td>{{ cliente.email|default:'-' }}</td>
                             <td>
                                 <span class="status-badge {% if cliente.ativo %}ativo{% else %}inativo{% endif %}">
-                                    {% if cliente.ativo %}Ativo{% else %}Inativo{% endif %}
+                                    {% if cliente.ativo %}Active{% else %}Inactive{% endif %}
                                 </span>
                             </td>
                             <td>
                                 <div class="button-row">
-                                    <a class="btn btn-secondary btn-sm" href="{% url 'clientes:cliente_update' cliente.pk %}">Editar</a>
-                                    <a class="btn btn-danger btn-sm" href="{% url 'clientes:cliente_delete' cliente.pk %}">Excluir</a>
+                                    <a class="btn btn-secondary btn-sm" href="{% url 'clientes:cliente_update' cliente.pk %}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'clientes:cliente_delete' cliente.pk %}">Delete</a>
                                 </div>
                             </td>
                         </tr>
@@ -47,7 +47,7 @@
             </table>
         </div>
     {% else %}
-        <div class="empty-state">Nenhum cliente cadastrado ainda.</div>
+        <div class="empty-state">No clients registered yet.</div>
     {% endif %}
 </section>
 {% endblock %}

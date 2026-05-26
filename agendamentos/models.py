@@ -8,9 +8,9 @@ from servicos.models import ServicoEstetico
 
 class Agendamento(models.Model):
 	class StatusAgendamento(models.TextChoices):
-		AGENDADO = "AGENDADO", "Agendado"
-		CANCELADO = "CANCELADO", "Cancelado"
-		CONCLUIDO = "CONCLUIDO", "Concluido"
+		AGENDADO = "AGENDADO", "Scheduled"
+		CANCELADO = "CANCELADO", "Cancelled"
+		CONCLUIDO = "CONCLUIDO", "Completed"
 
 	cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT, related_name="agendamentos")
 	profissional = models.ForeignKey(Profissional, on_delete=models.PROTECT, related_name="agendamentos")
@@ -43,7 +43,7 @@ class Agendamento(models.Model):
 
 		if conflito:
 			raise ValidationError(
-				{"data_hora": "Este profissional ja possui agendamento neste horario."}
+				{"data_hora": "This professional already has an appointment at this time."}
 			)
 
 	def save(self, *args, **kwargs):

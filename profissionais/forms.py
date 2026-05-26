@@ -7,3 +7,10 @@ class ProfissionalForm(forms.ModelForm):
     class Meta:
         model = Profissional
         fields = ["nome", "especialidade", "telefone", "email", "ativo"]
+        labels = {
+            "nome": "Name",
+            "especialidade": "Specialty",
+            "telefone": "Phone",
+            "email": "Email",
+            "ativo": "Active",
+        }

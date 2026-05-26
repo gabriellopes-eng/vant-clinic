@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block titulo %}Formulario de Pagamento{% endblock %}
+{% block titulo %}Payment Form{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>{% if form.instance.pk %}Editar pagamento{% else %}Novo pagamento{% endif %}</h2>
-            <p>Registre recebimentos e acompanhe o status financeiro dos agendamentos.</p>
+            <h2>{% if form.instance.pk %}Edit payment{% else %}New payment{% endif %}</h2>
+            <p>Register receipts and track the financial status of appointments.</p>
         </div>
     </div>
 
@@ -44,8 +44,8 @@
         </div>
 
         <div class="button-row">
-            <button type="submit">Salvar pagamento</button>
-            <a class="btn btn-secondary" href="{% url 'pagamentos:pagamento_list' %}">Voltar</a>
+            <button type="submit">Save payment</button>
+            <a class="btn btn-secondary" href="{% url 'pagamentos:pagamento_list' %}">Back</a>
         </div>
     </form>
 </section>

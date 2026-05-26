@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block titulo %}Formulario de Cliente{% endblock %}
+{% block titulo %}Client Form{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>{% if form.instance.pk %}Editar cliente{% else %}Novo cliente{% endif %}</h2>
-            <p>Preencha os dados de identificacao e contato.</p>
+            <h2>{% if form.instance.pk %}Edit client{% else %}New client{% endif %}</h2>
+            <p>Fill in identification and contact details.</p>
         </div>
     </div>
 
@@ -49,8 +49,8 @@
         </div>
 
         <div class="button-row">
-            <button type="submit">Salvar</button>
-            <a class="btn btn-secondary" href="{% url 'clientes:cliente_list' %}">Voltar</a>
+            <button type="submit">Save</button>
+            <a class="btn btn-secondary" href="{% url 'clientes:cliente_list' %}">Back</a>
         </div>
     </form>
 </section>

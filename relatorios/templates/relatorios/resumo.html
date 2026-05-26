@@ -1,35 +1,35 @@
 {% extends "base.html" %}
 
-{% block titulo %}Relatorio Resumo{% endblock %}
+{% block titulo %}Summary Report{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>Relatorio resumo</h2>
-            <p>Indicadores operacionais e financeiros da clinica em tempo real.</p>
+            <h2>Summary report</h2>
+            <p>Real-time operational and financial indicators for your clinic.</p>
         </div>
     </div>
 
     <div class="stats-grid">
         <article class="stat-card">
-            <span>Agendamentos</span>
+            <span>Appointments</span>
             <strong>{{ total_agendamentos }}</strong>
         </article>
         <article class="stat-card">
-            <span>Cancelamentos</span>
+            <span>Cancellations</span>
             <strong>{{ total_cancelamentos }}</strong>
         </article>
         <article class="stat-card">
-            <span>Servicos</span>
+            <span>Services</span>
             <strong>{{ total_servicos }}</strong>
         </article>
         <article class="stat-card">
-            <span>Pagamentos</span>
+            <span>Payments</span>
             <strong>{{ total_pagamentos }}</strong>
         </article>
         <article class="stat-card">
-            <span>Total pago</span>
+            <span>Total paid</span>
             <strong>R$ {{ valor_total_pago }}</strong>
         </article>
     </div>

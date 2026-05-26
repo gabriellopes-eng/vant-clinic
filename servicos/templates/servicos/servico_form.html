@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block titulo %}Formulario de Servico{% endblock %}
+{% block titulo %}Service Form{% endblock %}
 
 {% block conteudo %}
 <section class="panel">
     <div class="page-header">
         <div class="title-group">
-            <h2>{% if form.instance.pk %}Editar servico{% else %}Novo servico{% endif %}</h2>
-            <p>Defina descricao, duracao e precificacao do procedimento.</p>
+            <h2>{% if form.instance.pk %}Edit service{% else %}New service{% endif %}</h2>
+            <p>Define service description, duration, and pricing.</p>
         </div>
     </div>
 
@@ -49,8 +49,8 @@
         </div>
 
         <div class="button-row">
-            <button type="submit">Salvar</button>
-            <a class="btn btn-secondary" href="{% url 'servicos:servico_list' %}">Voltar</a>
+            <button type="submit">Save</button>
+            <a class="btn btn-secondary" href="{% url 'servicos:servico_list' %}">Back</a>
         </div>
     </form>
 </section>
