@@ -4,9 +4,9 @@
     --ink: #102037;
     --ink-soft: #57637a;
     --line: #dce4f1;
-    --brand: #0f5bd5;
-    --brand-strong: #0843a2;
-    --accent: #12a594;
+    --brand: #7a3ff2;
+    --brand-strong: #5520be;
+    --accent: #a86bff;
     --danger: #c03849;
     --success: #21835a;
     --shadow-lg: 0 18px 42px rgba(16, 32, 55, 0.1);
@@ -44,7 +44,7 @@ body {
 .bg-orb-1 {
     width: 280px;
     height: 280px;
-    background: linear-gradient(145deg, rgba(18, 165, 148, 0.24), rgba(15, 91, 213, 0.12));
+    background: linear-gradient(145deg, rgba(168, 107, 255, 0.24), rgba(122, 63, 242, 0.12));
     top: -80px;
     right: 8%;
 }
@@ -52,7 +52,7 @@ body {
 .bg-orb-2 {
     width: 320px;
     height: 320px;
-    background: linear-gradient(145deg, rgba(15, 91, 213, 0.2), rgba(130, 205, 255, 0.08));
+    background: linear-gradient(145deg, rgba(122, 63, 242, 0.2), rgba(205, 170, 255, 0.08));
     bottom: -130px;
     left: -90px;
 }
@@ -89,13 +89,13 @@ body {
     width: 42px;
     height: 42px;
     border-radius: 13px;
-    background: linear-gradient(140deg, var(--brand), #2f83ff);
+    background: linear-gradient(140deg, var(--brand), #a86bff);
     color: #fff;
     font-weight: 800;
     letter-spacing: 0.06em;
     display: grid;
     place-items: center;
-    box-shadow: 0 8px 22px rgba(15, 91, 213, 0.32);
+    box-shadow: 0 8px 22px rgba(122, 63, 242, 0.32);
 }
 
 .brand-text {
@@ -132,12 +132,12 @@ body {
 .main-nav a:hover,
 .main-nav a:focus-visible {
     color: var(--ink);
-    background: #eaf1fc;
+    background: #f2e9ff;
     outline: none;
 }
 
 .main-nav a.is-active {
-    background: #e3ecfb;
+    background: #efe3ff;
     color: var(--brand-strong);
 }
 
@@ -220,7 +220,7 @@ input[type="submit"] {
 .btn-primary,
 button[type="submit"],
 input[type="submit"] {
-    background: linear-gradient(130deg, var(--brand), #2b79e8);
+    background: linear-gradient(130deg, var(--brand), #a86bff);
     color: #fff;
 }
 
@@ -228,7 +228,7 @@ input[type="submit"] {
 button[type="submit"]:hover,
 input[type="submit"]:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 16px rgba(15, 91, 213, 0.24);
+    box-shadow: 0 8px 16px rgba(122, 63, 242, 0.24);
 }
 
 .btn-secondary {
@@ -239,7 +239,7 @@ input[type="submit"]:hover {
 
 .btn-secondary:hover {
     border-color: #c7d4e8;
-    background: #f7faff;
+    background: #faf7ff;
 }
 
 .btn-danger {
@@ -293,7 +293,7 @@ input[type="submit"]:hover {
 }
 
 .data-table tbody tr:hover {
-    background: #f7fbff;
+    background: #fbf8ff;
 }
 
 .muted {
@@ -307,7 +307,7 @@ input[type="submit"]:hover {
     color: var(--ink-soft);
     border: 1px dashed var(--line);
     border-radius: var(--radius-md);
-    background: #fafcff;
+    background: #fcf9ff;
 }
 
 .status-badge {
@@ -384,7 +384,7 @@ input[type="submit"]:hover {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-    outline: 3px solid rgba(15, 91, 213, 0.16);
+    outline: 3px solid rgba(122, 63, 242, 0.16);
     border-color: var(--brand);
 }
 
@@ -432,9 +432,9 @@ input[type="submit"]:hover {
     border-radius: 10px;
     padding: 0.62rem 0.7rem;
     font-size: 0.88rem;
-    border: 1px solid #c4d5f2;
-    background: #edf4ff;
-    color: #0f397f;
+    border: 1px solid #dac7ff;
+    background: #f4ecff;
+    color: #4d2796;
 }
 
 .alert.success {
@@ -457,7 +457,7 @@ input[type="submit"]:hover {
 }
 
 .hero-main {
-    background: linear-gradient(138deg, #0f5bd5, #1f8fb0);
+    background: linear-gradient(138deg, #7a3ff2, #a86bff);
     border-radius: var(--radius-lg);
     color: #fff;
     padding: clamp(1.2rem, 1rem + 1vw, 1.9rem);
