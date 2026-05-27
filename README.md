@@ -8,6 +8,8 @@
 
 Web platform for aesthetic clinic operations, focused on scheduling, service delivery, payments, and performance visibility.
 
+<img width="1365" height="621" alt="image" src="https://github.com/user-attachments/assets/5401d7df-b7bb-4d47-abbc-dbabcaf58bb0" />
+
 ## Overview
 
 The project was built with Django using a modular app-based architecture:
@@ -129,7 +131,14 @@ relatorios/       # dashboards and summary
 
 This project is ready for local development. For production, it is recommended to use:
 
+<<<<<<< HEAD
 - managed database (PostgreSQL),
 - proper `ALLOWED_HOSTS` configuration,
 - secret key via environment variable,
 - dedicated WSGI/ASGI server.
+=======
+- banco gerenciado (PostgreSQL),
+- configuracao de `ALLOWED_HOSTS`,
+- secret key por variavel de ambiente,
+- servidor WSGI/ASGI dedicado.
+>>>>>>> 5affde3a1adf0a53ebf075337456d9509bcba4dc
