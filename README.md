@@ -1,4 +1,4 @@
-# VANT Clinic
+#  💜VANT Clinic
 
 <p align="left">
 	<img src="https://img.shields.io/badge/Django-6.0.5-6F42C1?style=for-the-badge&labelColor=2B0E52" alt="Django 6.0.5">
