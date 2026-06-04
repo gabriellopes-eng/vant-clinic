@@ -60,81 +60,19 @@ This structure fits the current scope well and keeps the project simple to maint
 
 ## Diagrams
 
-<details>
-<summary>Architecture Diagram</summary>
+## Architecture Diagram
+<img width="2123" height="1253" alt="vant_clinic_diagrama_arquitetural drawio" src="https://github.com/user-attachments/assets/35e7441d-f932-44de-9187-ca7095919dc4" />
 
-```mermaid
-flowchart LR
-	User[User / Browser] --> Routes[URLs and Django Routing]
-	Routes --> Auth[Authentication and Middleware]
-	Auth --> Views[Views]
-	Views --> Forms[Forms and Validation]
-	Views --> Models[Models]
-	Models --> DB[(SQLite Database)]
-	Views --> Templates[Templates]
-	Templates --> User
-	Models --> Reports[Reports Module]
-	Reports --> Views
 
-	subgraph Apps
-		Core[core]
-		Clientes[clientes]
-		Profissionais[profissionais]
-		Servicos[servicos]
-		Agendamentos[agendamentos]
-		Pagamentos[pagamentos]
-		Relatorios[relatorios]
-	end
+## Use Case Diagram
+<img width="1760" height="927" alt="vant_clinic_caso_de_uso_drawio" src="https://github.com/user-attachments/assets/7087a2c1-d1d7-4226-be76-1342e0314c15" />
 
-	Views --> Apps
-	Models --> Apps
-```
-
-</details>
-
-<details>
-<summary>Use Case Diagram</summary>
-
-```mermaid
-flowchart LR
-	Guest[Unauthenticated User] --> Home[View home]
-	Guest --> Login[Log in]
-	Guest --> Register[Register account]
-
-	User[Authenticated User] --> Clients[Manage clients]
-	User --> Professionals[Manage professionals]
-	User --> Services[Manage services]
-	User --> Schedule[List appointments]
-	User --> CreateAppointment[Create appointment]
-	User --> UpdateAppointment[Reschedule appointment]
-	User --> CancelAppointment[Cancel appointment]
-	User --> Payments[Register and manage payments]
-	User --> Reports[View summary report]
-	User --> Logout[Log out]
-
-	Admin[Superuser / Admin] --> DjangoAdmin[Access Django admin]
-	Admin --> Reports
-
-	CreateAppointment --> ConflictRule[Validate time conflict]
-	UpdateAppointment --> ConflictRule
-	CancelAppointment --> History[Preserve cancellation status]
-	Payments --> PaymentStatus[Track pending or paid status]
-```
-
-</details>
 
 ## Documentation
 
 - `docs/requisitos-vant.md`: system requirements and functional scope.
 - `docs/relatorio-validacao-manual.md`: manual backend validation checklist.
 - `docs/planejamento-arquitetura-software.md`: consolidated software architecture planning document.
-
-## Documentacao
-
-- `docs/requisitos-vant.md`: requisitos e escopo funcional do sistema.
-- `docs/relatorio-validacao-manual.md`: roteiro de validacao manual do backend.
-- `docs/planejamento-arquitetura-software.md`: planejamento arquitetural consolidado do projeto.
-
 
 ## Technologies
 
